@@ -90,8 +90,7 @@
 # Usually this is used to provision both undercloud and the overcloud.
 #
 - hosts: '{{ undercloud_ip }}'
-  user: root
-  become: true
+  user: stack
   vars:
     dci_status: 'running'
     dci_comment: 'Provision the undercloud and the overcloud'

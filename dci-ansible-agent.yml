@@ -74,6 +74,7 @@
   vars:
     dci_status: 'pre-run'
     dci_comment: 'Spawning the undercloud'
+    job_id: "{{ job_informations['job_id'] }}"
   tasks:
     - block:
       - include: '{{ dci_config_dir }}/hooks/pre-run.yml'
@@ -90,11 +91,11 @@
 # Usually this is used to provision both undercloud and the overcloud.
 #
 - hosts: '{{ undercloud_ip }}'
-  user: root
-  become: true
+  user: stack
   vars:
     dci_status: 'running'
     dci_comment: 'Provision the undercloud and the overcloud'
+    job_id: "{{ job_informations['job_id'] }}"
   tasks:
     - block:
       - include: '{{ dci_config_dir }}/hooks/running.yml'
